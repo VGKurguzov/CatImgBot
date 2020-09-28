@@ -15,6 +15,10 @@ public class ImageWorker {
     protected String saveImage(URL urlString) throws IOException {
         BufferedImage image = ImageIO.read(urlString);
         if (image != null) {
+            File dir = new File(EnvResources.directory + "/images");
+            if(! dir.exists()) {
+                dir.mkdir();
+            }
             ImageIO.write(image, "jpg", new File(EnvResources.directory + urlString.getPath()));
             return EnvResources.directory + urlString.getPath();
         }
