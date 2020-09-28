@@ -18,6 +18,7 @@ public class ConnectionCatApi {
 
         try {
             HttpGet request = new HttpGet(EnvResources.urlApi);
+            request.addHeader("User-Agent", "Mozilla/5.0 Firefox/26.0");
             request.addHeader("x-api-key", EnvResources.tokenApi);
             request.addHeader("Accept", "application/json");
             request.addHeader("Content-Type", "application/json");
