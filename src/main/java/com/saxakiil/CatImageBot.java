@@ -11,7 +11,6 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.Keyboard
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +29,7 @@ public class CatImageBot extends TelegramLongPollingBot {
                     sendTextMsg(msg, TextResources.HELLO);
                     try {
                         sendImageCatMsg(msg);
-                        Thread.sleep(400);
+                        Thread.sleep(150);
                         setKeyboard();
                         sendTextMsg(msg, TextResources.HELLO_NEXT);
                     } catch (InterruptedException e) {
@@ -75,14 +74,15 @@ public class CatImageBot extends TelegramLongPollingBot {
         SendPhoto s = new SendPhoto();
         ImageCat img = new ImageCat();
         s.setChatId(msg.getChatId());
-        s.setPhoto(new File(img.getPath()));
+        s.setPhoto(img.getNameFile(), img.getFile());
         s.setReplyMarkup(replyKeyboardMarkup);
         try {
             execute(s);
         } catch (TelegramApiException e){
             e.printStackTrace();
         } finally {
-            img.deleteFile();
+            img.closeStream();
+            img.updateImage();
         }
     }
 
