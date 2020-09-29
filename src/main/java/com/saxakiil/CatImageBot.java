@@ -40,6 +40,7 @@ public class CatImageBot extends TelegramLongPollingBot {
                     sendImageCatMsg(msg);
                     break;
                 default:
+                    sendTextMsg(msg, TextResources.OTHER_MESSAGE);
                     break;
             }
 
