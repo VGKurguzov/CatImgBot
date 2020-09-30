@@ -1,1 +1,1 @@
-web: java -jar target/CatImg_bot-1.0-SNAPSHOT.jar
+worker: sh target/bin/catImg_bot
