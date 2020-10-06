@@ -6,12 +6,12 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 public class Main {
     public static void main(String[] args) {
-                ApiContextInitializer.init();
-
+        ApiContextInitializer.init();
+        CatImageBot catImageBot = new CatImageBot();
         TelegramBotsApi botsApi = new TelegramBotsApi();
 
         try {
-            botsApi.registerBot(new CatImageBot());
+            botsApi.registerBot(catImageBot);
         } catch (TelegramApiException e) {
             e.printStackTrace();
         }
