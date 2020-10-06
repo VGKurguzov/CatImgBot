@@ -1,1 +1,1 @@
-worker: sh target/bin/catImg_bot
+web: sh target/bin/catImg_bot
